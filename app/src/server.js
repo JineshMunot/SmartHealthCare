@@ -48,8 +48,14 @@ new client.Gauge({ name: 'app_info', help: 'App version and deployment slot', la
 // ---------- App ----------
 const app = express();
 app.disable('x-powered-by');
-app.use(helmet());            // security headers (CSP, HSTS-ready, etc.)
-app.use(express.json({ limit: '10kb' }));
+   app.use(helmet({
+     hsts: false,
+     contentSecurityPolicy: {
+       useDefaults: true,
+       directives: { 'upgrade-insecure-requests': null },
+     },
+   }));
+   app.use(express.json({ limit: '10kb' }));
 
 app.use((req, res, next) => {
   const end = httpDuration.startTimer();
