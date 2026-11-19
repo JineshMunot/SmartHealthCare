@@ -20,3 +20,5 @@ th { color: #607d8b; font-weight: 600; }
 .msg { margin: 10px 0 0; font-size: 14px; min-height: 18px; }
 .msg.err { color: #c62828; } .msg.ok { color: #2e7d32; }
 @media (max-width: 720px) { form { grid-template-columns: 1fr 1fr; } }
+body[data-slot="blue"]  { background: #bbdefb; }
+body[data-slot="green"] { background: #c8e6c9; }
